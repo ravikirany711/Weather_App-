@@ -9,7 +9,11 @@ const API_KEY = "70a77469dbb4c38512c8c43ae0fb4fa9"
 class App extends React.Component {
   getWeather = async (e) => {
     e.preventDefault()
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${API_KEY}`)
+    const city = e.target.elements.city.value //whatever we type in to the input
+    const country = e.target.elements.country.value //whatever we type in to the input
+
+
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
     const data = await api_call.json()
     console.log(data)
   }
