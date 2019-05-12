@@ -8,7 +8,7 @@ const API_KEY = "70a77469dbb4c38512c8c43ae0fb4fa9"
 
 class App extends React.Component {
   state = {
-    temparature: undefined,
+    temperature: undefined,
     city: undefined,
     country: undefined,
     humidity: undefined,
@@ -22,7 +22,7 @@ class App extends React.Component {
     const country = e.target.elements.country.value //whatever we type in to the input
 
 
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
     const data = await api_call.json()
     console.log(data)
 
@@ -40,7 +40,16 @@ class App extends React.Component {
       <div>
         <Titles />
         <Form getWeather={this.getWeather} />
-        <Weather />
+        <Weather
+          temperature={this.state.temperature}
+          city={this.state.city}
+          country={this.state.country}
+          humidity={this.state.humidity}
+          description={this.state.description}
+          error={this.state.error}
+
+
+        />
       </div>
     )
   }
