@@ -11,6 +11,7 @@ class Weather extends React.Component {
                 }
                 {this.props.description && <p>Conditions: {this.props.description}</p>
                 }
+                {this.props.error && <p>{this.props.error}</p>}
 
 
 
